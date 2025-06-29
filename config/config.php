@@ -12,4 +12,19 @@ try {
 } catch (PDOException $e) {
     die("Erreur de connexion à la base de données : " . $e->getMessage());
 }
+
+// Configuration générale
+define('BASE_URL', 'http://localhost');
+define('UPLOAD_DIR', 'uploads/');
+
+// Fonction helper pour les vues
+function view($viewName, $data = []) {
+    extract($data);
+    include "views/{$viewName}.php";
+}
+
+function redirect($url) {
+    header("Location: {$url}");
+    exit();
+}
 ?>
